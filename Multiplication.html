@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title> Multiplication Game</title>
+    <style type ="text/css">
+
+.square {
+  height: 600px;
+  width: 600px;
+  outline: 5px solid black ;
+  outline-offset: 30px;
+  background-color: rgb(124, 110, 110);
+  pointer-events: none;
+  shape-outside: none;
+  opacity: 0.2;
+  position:relative; 
+  left: 350px;
+  top: -500px
+  
+}
+       body{
+
+            font-family: 'Times New Roman', Times, serif';
+            
+           
+
+
+        }
+        button{
+            background-color: orange;
+            
+            position:relative; 
+            left: 480px; 
+            width: 100px;
+            top: -600px;
+            margin-left:10px;
+
+            font-size: 15px;
+            text-align: center;
+            padding: 3px;
+            
+
+        }
+        div{
+         
+            position: relative; top: 40px; left:580px;
+            
+        }
+        h1{
+            position: relative;
+            left: 20px;
+            text-emphasis: black,5px;
+            text-align: center;
+            text-decoration: underline dashed 3px;
+        }
+        p{
+            position: relative;
+            top:-40px;
+            left: 640px;
+        
+        }
+
+    </style>
+</head>
+<body>
+    
+    <h1>Multiplication Game</h1>
+    <div id="operation" style= "position: relative; top: 30px;">0 x 0</div>
+    <div id ="operation2" style= "position: relative; top: 50px;">0 x 0</div>
+    <div id ="operation3" style= "position: relative; top: 70px;">0 x 0</div>
+    <p id ="inputs"><input id ="input" type="text"  size="1" maxlength="4"></input></p>
+    <p id="inputs2"><input id ="inputa" type="text"  size="1" maxlength="4"></input></p>
+    <p id="inputs3"><input id ="inputb" type="text"  size="1" maxlength="4"></input></p>
+    <p id="scoreRight" style="position:relative; left: 590px; color: green; font-size: 15px;"></p>
+    <p id="scoreWrong" style="position:relative; left: 570px; color: red; font-size: 15px;"></p>
+    <p id ="wrong" type="text" style =" color: red; position: relative; top: -185px; left: 690px;"></p>
+    <p id ="correct" type="text" style =" color: green; position: relative; top: -185px; left: 690px;"></p>
+    <p id ="wrong2" type="text" style =" color: red; position: relative; top: -182px; left: 690px;"></p>
+    <p id ="correct2" type="text" style =" color: green; position: relative; top: -182px; left: 690px;"></p>
+    <p id ="wrong3" type="text" style =" color: red; position: relative; top: -180px; left: 690px;"></p>
+    <p id ="correct3" type="text" style =" color: green; position: relative; top: -180px; left: 690px;"></p>
+    <div class ="square"></div>
+    <button id ="check" style="color: white;">Submit</button>
+    <button id ="reset" style="color:white">Reset</button>
+    <button id="show" style="color:white">Show</button>
+    <script type ="text/javascript">
+      
+    window.onload = function submit(){
+            newQuestion();
+    }
+
+        document.getElementById("reset").onclick = function reset (){
+            newQuestion();
+
+            document.getElementById("input").value='';
+            document.getElementById("correct").innerHTML = '';
+            document.getElementById("wrong").innerHTML = '';
+            document.getElementById("scoreRight").innerHTML = '';
+            document.getElementById("scoreWrong").innerHTML = '';
+
+            document.getElementById("inputa").value='';
+            document.getElementById("correct2").innerHTML = '';
+            document.getElementById("wrong2").innerHTML = '';
+            
+            document.getElementById("inputb").value='';
+            document.getElementById("correct3").innerHTML = '';
+            document.getElementById("wrong3").innerHTML = '';
+    }
+
+   
+    function newQuestion(){
+
+        let multiplication = document.getElementById("operation");
+        let firstNum = Math.ceil(Math.random() * 10);
+        let secondNum = Math.ceil(Math.random() * 10);
+        let correctAnswer = firstNum * secondNum;
+        multiplication.innerHTML = firstNum + "x" + secondNum;
+
+        let multiplication2 = document.getElementById("operation2");
+        let firstNum2 = Math.ceil(Math.random() * 10);
+        let secondNum2 = Math.ceil(Math.random() * 10);
+        let correctAnswer2 = firstNum2 * secondNum2;
+        multiplication2.innerHTML = firstNum2 + "x" + secondNum2;
+
+        let multiplication3 = document.getElementById("operation3");
+        let firstNum3 = Math.ceil(Math.random() * 10);
+        let secondNum3 = Math.ceil(Math.random() * 10);
+        let correctAnswer3 = firstNum3 * secondNum3;
+        multiplication3.innerHTML = firstNum3 + "x" + secondNum3;
+
+
+            document.getElementById("show").onclick= function showingAnswer(){
+            
+            document.getElementById("input").value='';
+            document.getElementById("correct").innerHTML = '';
+            document.getElementById("wrong").innerHTML = '';
+            document.getElementById("scoreRight").innerHTML = '';
+            document.getElementById("scoreWrong").innerHTML = '';
+            document.getElementById("inputa").value='';
+            document.getElementById("correct2").innerHTML = '';
+            document.getElementById("wrong2").innerHTML = '';
+            
+            document.getElementById("inputb").value='';
+            document.getElementById("correct3").innerHTML = '';
+            document.getElementById("wrong3").innerHTML = '';
+
+            document.getElementById("input").value = correctAnswer;  
+            
+            correctAnswer.innerHTML;     
+            document.getElementById("inputa").value = correctAnswer2;  
+            correctAnswer2.innerHTML;      
+            document.getElementById("inputb").value = correctAnswer3;  
+            correctAnswer3.innerHTML;       
+     
+            
+            }
+            document.getElementById("check").onclick = function checking (){
+            console.log(correctAnswer);
+            
+            let answer = document.getElementById('input').value;
+            
+           let answer2 = document.getElementById('inputa').value;
+
+           let answer3 = document.getElementById('inputb').value;
+           let score = 0;
+            console.log(answer); 
+            console.log (answer2);
+            console.log(answer3);
+            if(answer == correctAnswer){
+             document.getElementById("correct").innerHTML = ":-)";
+              score++;
+            }
+             else {  
+                document.getElementById("wrong").innerHTML = ":-(";
+             }
+             if(answer2 == correctAnswer2){
+             document.getElementById("correct2").innerHTML = ":-)";
+              score ++;
+             }
+             else {
+                document.getElementById("wrong2").innerHTML = ":-(";
+             }
+             if(answer3 == correctAnswer3){
+             document.getElementById("correct3").innerHTML = ":-)";
+               score++;
+                
+             }
+             else{
+                document.getElementById("wrong3").innerHTML = ":-(";
+                
+             }
+             if (score <3 && score > 0){
+             document.getElementById("scoreWrong").innerHTML = "You've got: " + score + " /3 right!, try again";
+             score;
+             }
+             if(score < 1){
+                document.getElementById("scoreWrong").innerHTML =  "You've got: " + score + " /3 right, try again!";
+             }
+             if(score == 3){
+                document.getElementById("scoreRight").innerHTML = "You've got all correct!";
+             }
+    
+             
+            
+           
+        
+       
+    }  
+    
+}
+    </script>
+
+
+</body>
+
+
+</html>
